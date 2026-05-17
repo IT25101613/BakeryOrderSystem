@@ -1,0 +1,8 @@
+C001,Akash Perera,akashperera@gmail.com,0771234567
+C002,Nimal Silva,nimalsilva@gmail.com,0712345678
+C003,Kavindi Fernando,kavindi@gmail.com,0759876543
+C004,Supun Jayasuriya,supun@gmail.com,0764567890
+C005,Tharushi Wickramasinghe,tharushi@gmail.com,0781239876
+C006,Pasindu Madushan,pasindu@gmail.com,0705678912
+C007,Chathura Lakshan,chathura@gmail.com,0742223344
+C008,Hashini Perera,hashini@gmail.com,0779988776

@@ -6,7 +6,8 @@ import java.util.*;
 
 public class PaymentService {
 
-    private static final String FILE_PATH = "data/payments.txt";
+    private static final String FILE_PATH =  "C:/Users/akash/Documents/BakeryOrderSystem/data/payments.txt";
+
 
     public void addPayment(Payment payment) {
 
@@ -31,18 +32,24 @@ public class PaymentService {
             String line;
 
             while ((line = reader.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
 
                 String[] data = line.split(",");
 
                 if (data.length == 5) {
-
-                    payments.add(new Payment(
-                            data[0],
-                            data[1],
-                            Double.parseDouble(data[2]),
-                            data[3],
-                            data[4]
-                    ));
+                    try {
+                        payments.add(new Payment(
+                                data[0].trim(),
+                                data[1].trim(),
+                                Double.parseDouble(data[2].trim()),
+                                data[3].trim(),
+                                data[4].trim()
+                        ));
+                    } catch (NumberFormatException ignored) {
+                        // Skip malformed numeric rows.
+                    }
                 }
             }
 

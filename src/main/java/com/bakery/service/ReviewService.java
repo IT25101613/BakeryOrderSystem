@@ -6,7 +6,7 @@ import java.util.*;
 
 public class ReviewService {
 
-    private static final String FILE_PATH = "data/reviews.txt";
+    private static final String FILE_PATH = "C:/Users/akash/Documents/BakeryOrderSystem/data/reviews.txt";
 
     public void addReview(Review review) {
 
@@ -22,20 +22,15 @@ public class ReviewService {
     }
 
     public List<Review> getAllReviews() {
-
         List<Review> reviews = new ArrayList<>();
 
-        try (BufferedReader reader =
-                     new BufferedReader(new FileReader(FILE_PATH))) {
-
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
-
-                String[] data = line.split(",");
+                String[] data = line.split(",", 5);
 
                 if (data.length == 5) {
-
                     reviews.add(new Review(
                             data[0],
                             data[1],
@@ -45,7 +40,6 @@ public class ReviewService {
                     ));
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }

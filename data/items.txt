@@ -1,0 +1,8 @@
+I001,Chocolate Cake,Cake,3500.0,10
+I002,Vanilla Pastry,Pastry,450.0,25
+I003,Garlic Bread,Bread,850.0,15
+I004,Red Velvet Cake,Cake,4200.0,8
+I005,Croissant,Pastry,600.0,30
+I006,Banana Bread,Bread,950.0,12
+I007,Blueberry Muffin,Pastry,500.0,20
+I008,Cheese Cake,Cake,5000.0,5

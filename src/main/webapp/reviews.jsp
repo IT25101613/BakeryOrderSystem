@@ -1,3 +1,6 @@
+<%@ page import="com.bakery.model.Review" %>
+<%@ page import="com.bakery.service.ReviewService" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>Review Management</title>
@@ -43,6 +46,39 @@
 </form>
 
 <br>
+
+<%
+    ReviewService service = new ReviewService();
+    List<Review> reviews = service.getAllReviews();
+%>
+
+<h4>All Reviews</h4>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Review ID</th>
+        <th>Customer ID</th>
+        <th>Target ID</th>
+        <th>Rating</th>
+        <th>Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+        for (Review review : reviews) {
+    %>
+    <tr>
+        <td><%= review.getReviewId() %></td>
+        <td><%= review.getCustomerId() %></td>
+        <td><%= review.getTargetId() %></td>
+        <td><%= review.getRating() %></td>
+        <td><%= review.getComment() %></td>
+    </tr>
+    <%
+        }
+    %>
+    </tbody>
+</table>
 
 <a href="index.jsp">Back to Home</a>
 

@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class CustomerService {
-    private static final String FILE_PATH = "data/customers.txt";
+    private static final String FILE_PATH =  "C:/Users/akash/Documents/BakeryOrderSystem/data/customers.txt";
 
     public void addCustomer(Customer customer) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
@@ -23,10 +23,19 @@ public class CustomerService {
             String line;
 
             while ((line = reader.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
+
                 String[] data = line.split(",");
 
                 if (data.length == 4) {
-                    customers.add(new Customer(data[0], data[1], data[2], data[3]));
+                    customers.add(new Customer(
+                            data[0].trim(),
+                            data[1].trim(),
+                            data[2].trim(),
+                            data[3].trim()
+                    ));
                 }
             }
         } catch (IOException e) {

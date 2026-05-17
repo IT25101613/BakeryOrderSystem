@@ -1,0 +1,8 @@
+P001,O001,7000.0,Card,Paid
+P002,O002,2250.0,Cash,Paid
+P003,O003,850.0,Online,Pending
+P004,O004,4200.0,Card,Paid
+P005,O005,3600.0,Cash,Pending
+P006,O006,1900.0,Online,Paid
+P007,O007,2000.0,Card,Paid
+P008,O008,5000.0,Cash,Pending

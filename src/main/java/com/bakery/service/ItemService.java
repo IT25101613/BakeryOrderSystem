@@ -6,7 +6,7 @@ import java.util.*;
 
 public class ItemService {
 
-    private static final String FILE_PATH = "data/items.txt";
+    private static final String FILE_PATH = "C:/Users/akash/Documents/BakeryOrderSystem/data/items.txt";
 
     public void addItem(BakeryItem item) {
 
@@ -31,18 +31,24 @@ public class ItemService {
             String line;
 
             while ((line = reader.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
 
                 String[] data = line.split(",");
 
                 if (data.length == 5) {
-
-                    items.add(new BakeryItem(
-                            data[0],
-                            data[1],
-                            data[2],
-                            Double.parseDouble(data[3]),
-                            Integer.parseInt(data[4])
-                    ));
+                    try {
+                        items.add(new BakeryItem(
+                                data[0].trim(),
+                                data[1].trim(),
+                                data[2].trim(),
+                                Double.parseDouble(data[3].trim()),
+                                Integer.parseInt(data[4].trim())
+                        ));
+                    } catch (NumberFormatException ignored) {
+                        // Skip malformed numeric rows.
+                    }
                 }
             }
 

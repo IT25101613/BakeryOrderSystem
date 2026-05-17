@@ -1,0 +1,6 @@
+B001,C001,Birthday Cake,Chocolate,Happy Birthday Akash,2026-05-20,Pending
+B002,C002,Wedding Cake,Vanilla,Congratulations Nimal & Sachi,2026-06-15,Confirmed
+B003,C003,Anniversary Cake,Strawberry,Happy Anniversary,2026-07-10,Preparing
+B004,C004,Custom Design Cake,Chocolate,Best Wishes,2026-08-01,Completed
+B005,C005,Birthday Cake,Red Velvet,Happy 21st Birthday,2026-09-12,Pending
+B006,C006,Wedding Cake,White Chocolate,Forever Together,2026-10-20,Confirmed

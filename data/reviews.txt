@@ -1,0 +1,8 @@
+R001,C001,I001,5,Excellent cake and fast delivery
+R002,C002,I002,4,Fresh and tasty pastry
+R003,C003,I003,5,Very good bread and soft texture
+R004,C004,I004,5,Beautiful cake design and delicious taste
+R005,C005,I005,4,Crispy and fresh croissant
+R006,C006,I006,5,Perfect banana bread
+R007,C007,I007,4,Blueberry muffin was amazing
+R008,C008,I008,5,Best cheesecake I have ever tasted

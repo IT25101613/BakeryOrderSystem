@@ -6,7 +6,7 @@ import java.util.*;
 
 public class BookingService {
 
-    private static final String FILE_PATH = "data/bookings.txt";
+    private static final String FILE_PATH = "C:/Users/akash/Documents/BakeryOrderSystem/data/bookings.txt";
 
     public void addBooking(CustomCakeBooking booking) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
@@ -24,12 +24,21 @@ public class BookingService {
             String line;
 
             while ((line = reader.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue;
+                }
+
                 String[] data = line.split(",");
 
                 if (data.length == 7) {
                     bookings.add(new CustomCakeBooking(
-                            data[0], data[1], data[2], data[3],
-                            data[4], data[5], data[6]
+                            data[0].trim(),
+                            data[1].trim(),
+                            data[2].trim(),
+                            data[3].trim(),
+                            data[4].trim(),
+                            data[5].trim(),
+                            data[6].trim()
                     ));
                 }
             }
