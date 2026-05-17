@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class BookingService {
+
     private static final String FILE_PATH = "data/bookings.txt";
 
     public void addBooking(CustomCakeBooking booking) {
@@ -27,13 +28,8 @@ public class BookingService {
 
                 if (data.length == 7) {
                     bookings.add(new CustomCakeBooking(
-                            data[0],
-                            data[1],
-                            data[2],
-                            data[3],
-                            data[4],
-                            data[5],
-                            data[6]
+                            data[0], data[1], data[2], data[3],
+                            data[4], data[5], data[6]
                     ));
                 }
             }
@@ -42,5 +38,46 @@ public class BookingService {
         }
 
         return bookings;
+    }
+
+    public CustomCakeBooking getBookingById(String bookingId) {
+        for (CustomCakeBooking booking : getAllBookings()) {
+            if (booking.getBookingId().equals(bookingId)) {
+                return booking;
+            }
+        }
+        return null;
+    }
+
+    public void updateBooking(CustomCakeBooking updatedBooking) {
+        List<CustomCakeBooking> bookings = getAllBookings();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (CustomCakeBooking booking : bookings) {
+                if (booking.getBookingId().equals(updatedBooking.getBookingId())) {
+                    writer.write(updatedBooking.toFileString());
+                } else {
+                    writer.write(booking.toFileString());
+                }
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteBooking(String bookingId) {
+        List<CustomCakeBooking> bookings = getAllBookings();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (CustomCakeBooking booking : bookings) {
+                if (!booking.getBookingId().equals(bookingId)) {
+                    writer.write(booking.toFileString());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
