@@ -75,6 +75,14 @@
 
 <h3>Item List</h3>
 
+<form method="get" action="items.jsp" class="mb-3">
+    <input type="text" name="search" placeholder="Search item..." class="form-control"
+           value="<%= request.getParameter("search") != null ? request.getParameter("search") : "" %>">
+    <br>
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a href="items.jsp" class="btn btn-secondary">Clear</a>
+</form>
+
 <table class="table table-bordered table-striped">
 
     <tr>
@@ -87,7 +95,15 @@
     </tr>
 
 <%
-    List<BakeryItem> items = service.getAllItems();
+    String search = request.getParameter("search");
+
+    List<BakeryItem> items;
+
+    if (search != null && !search.trim().isEmpty()) {
+        items = service.searchItems(search);
+    } else {
+        items = service.getAllItems();
+    }
 
     for (BakeryItem item : items) {
 %>

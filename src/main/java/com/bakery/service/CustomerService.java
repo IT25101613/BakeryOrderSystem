@@ -76,4 +76,20 @@ public class CustomerService {
             e.printStackTrace();
         }
     }
+
+    public List<Customer> searchCustomers(String keyword) {
+        List<Customer> result = new ArrayList<>();
+
+        for (Customer customer : getAllCustomers()) {
+            if (customer.getId().toLowerCase().contains(keyword.toLowerCase()) ||
+                customer.getName().toLowerCase().contains(keyword.toLowerCase()) ||
+                customer.getEmail().toLowerCase().contains(keyword.toLowerCase()) ||
+                customer.getPhone().toLowerCase().contains(keyword.toLowerCase())) {
+
+                result.add(customer);
+            }
+        }
+
+        return result;
+    }
 }

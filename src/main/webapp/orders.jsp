@@ -56,6 +56,14 @@
 
 <h3>Order List</h3>
 
+<form method="get" action="orders.jsp" class="mb-3">
+    <input type="text" name="search" placeholder="Search order..." class="form-control"
+           value="<%= request.getParameter("search") != null ? request.getParameter("search") : "" %>">
+    <br>
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a href="orders.jsp" class="btn btn-secondary">Clear</a>
+</form>
+
 <table class="table table-bordered table-striped">
     <tr>
         <th>Order ID</th>
@@ -67,7 +75,15 @@
     </tr>
 
 <%
-    List<Order> orders = service.getAllOrders();
+    String search = request.getParameter("search");
+
+    List<Order> orders;
+
+    if (search != null && !search.trim().isEmpty()) {
+        orders = service.searchOrders(search);
+    } else {
+        orders = service.getAllOrders();
+    }
 
     for (Order order : orders) {
 %>

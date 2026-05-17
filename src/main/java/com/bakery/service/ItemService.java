@@ -111,4 +111,19 @@ public class ItemService {
             e.printStackTrace();
         }
     }
+
+    public List<BakeryItem> searchItems(String keyword) {
+        List<BakeryItem> result = new ArrayList<>();
+
+        for (BakeryItem item : getAllItems()) {
+            if (item.getItemId().toLowerCase().contains(keyword.toLowerCase()) ||
+                item.getName().toLowerCase().contains(keyword.toLowerCase()) ||
+                item.getCategory().toLowerCase().contains(keyword.toLowerCase())) {
+
+                result.add(item);
+            }
+        }
+
+        return result;
+    }
 }

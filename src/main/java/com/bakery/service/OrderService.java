@@ -83,4 +83,20 @@ public class OrderService {
             e.printStackTrace();
         }
     }
+
+    public List<Order> searchOrders(String keyword) {
+        List<Order> result = new ArrayList<>();
+
+        for (Order order : getAllOrders()) {
+            if (order.getOrderId().toLowerCase().contains(keyword.toLowerCase()) ||
+                order.getCustomerId().toLowerCase().contains(keyword.toLowerCase()) ||
+                order.getItemId().toLowerCase().contains(keyword.toLowerCase()) ||
+                order.getStatus().toLowerCase().contains(keyword.toLowerCase())) {
+
+                result.add(order);
+            }
+        }
+
+        return result;
+    }
 }

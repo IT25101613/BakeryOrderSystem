@@ -47,6 +47,14 @@
 
 <h3>Customer List</h3>
 
+<form method="get" action="customers.jsp" class="mb-3">
+    <input type="text" name="search" placeholder="Search customer..." class="form-control"
+           value="<%= request.getParameter("search") != null ? request.getParameter("search") : "" %>">
+    <br>
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a href="customers.jsp" class="btn btn-secondary">Clear</a>
+</form>
+
 <table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
@@ -57,7 +65,15 @@
     </tr>
 
     <%
-        List<Customer> customers = service.getAllCustomers();
+        String search = request.getParameter("search");
+
+        List<Customer> customers;
+
+        if (search != null && !search.trim().isEmpty()) {
+            customers = service.searchCustomers(search);
+        } else {
+            customers = service.getAllCustomers();
+        }
 
         for (Customer c : customers) {
     %>
