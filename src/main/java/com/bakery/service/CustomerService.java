@@ -50,4 +50,30 @@ public class CustomerService {
             e.printStackTrace();
         }
     }
+
+    public Customer getCustomerById(String id) {
+        for (Customer customer : getAllCustomers()) {
+            if (customer.getId().equals(id)) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    public void updateCustomer(Customer updatedCustomer) {
+        List<Customer> customers = getAllCustomers();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (Customer customer : customers) {
+                if (customer.getId().equals(updatedCustomer.getId())) {
+                    writer.write(updatedCustomer.toFileString());
+                } else {
+                    writer.write(customer.toFileString());
+                }
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

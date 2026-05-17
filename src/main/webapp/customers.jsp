@@ -10,15 +10,35 @@
 
 <h2>Customer Management</h2>
 
+<%
+    CustomerService service = new CustomerService();
+    String editId = request.getParameter("editId");
+    Customer editCustomer = null;
+
+    if (editId != null) {
+        editCustomer = service.getCustomerById(editId);
+    }
+%>
+
 <form action="customer" method="post">
-    <input type="hidden" name="action" value="add">
+    <input type="hidden" name="action" value="<%= editCustomer != null ? "update" : "add" %>">
 
-    <input type="text" name="id" placeholder="Customer ID" required><br><br>
-    <input type="text" name="name" placeholder="Customer Name" required><br><br>
-    <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="text" name="phone" placeholder="Phone Number" required><br><br>
+    <input type="text" name="id" placeholder="Customer ID"
+           value="<%= editCustomer != null ? editCustomer.getId() : "" %>"
+           <%= editCustomer != null ? "readonly" : "" %> required><br><br>
 
-    <button type="submit">Add Customer</button>
+    <input type="text" name="name" placeholder="Customer Name"
+           value="<%= editCustomer != null ? editCustomer.getName() : "" %>" required><br><br>
+
+    <input type="email" name="email" placeholder="Email"
+           value="<%= editCustomer != null ? editCustomer.getEmail() : "" %>" required><br><br>
+
+    <input type="text" name="phone" placeholder="Phone Number"
+           value="<%= editCustomer != null ? editCustomer.getPhone() : "" %>" required><br><br>
+
+    <button type="submit">
+        <%= editCustomer != null ? "Update Customer" : "Add Customer" %>
+    </button>
 </form>
 
 <hr>
@@ -35,7 +55,6 @@
     </tr>
 
     <%
-        CustomerService service = new CustomerService();
         List<Customer> customers = service.getAllCustomers();
 
         for (Customer c : customers) {
@@ -47,7 +66,12 @@
         <td><%= c.getEmail() %></td>
         <td><%= c.getPhone() %></td>
         <td>
-            <form action="customer" method="post">
+            <form action="customers.jsp" method="get" style="display:inline;">
+                <input type="hidden" name="editId" value="<%= c.getId() %>">
+                <button type="submit">Edit</button>
+            </form>
+
+            <form action="customer" method="post" style="display:inline;">
                 <input type="hidden" name="action" value="delete">
                 <input type="hidden" name="id" value="<%= c.getId() %>">
                 <button type="submit">Delete</button>
