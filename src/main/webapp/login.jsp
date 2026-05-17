@@ -142,6 +142,11 @@
                         <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
                         <button type="submit" class="btn btn-login w-100">Login</button>
                     </form>
+                    <div class="text-center mt-3">
+                        <a href="customer-home.jsp" class="btn btn-outline-secondary w-100">
+                            Continue as Customer
+                        </a>
+                    </div>
 
                     <div class="quote-box">
                         <p class="quote-line">Freshly baked, freshly served.</p>
