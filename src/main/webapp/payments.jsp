@@ -9,6 +9,9 @@
 </head>
 <body>
 <div class="container mt-4">
+<div id="numberWarning" class="alert alert-danger d-none" role="alert">
+    Negative amounts are not allowed.
+</div>
 
 <h2>Payment Management</h2>
 
@@ -45,6 +48,7 @@
 
     <input type="number"
            step="0.01"
+           min="0"
            name="amount"
            placeholder="Amount"
            value="<%= editPayment != null ? editPayment.getAmount() : "" %>"
@@ -140,5 +144,32 @@
 <a href="index.jsp">Back to Home</a>
 
 </div>
+<script>
+    (function () {
+        const warning = document.getElementById("numberWarning");
+        const amountInput = document.querySelector("input[name='amount']");
+        if (!amountInput) return;
+
+        function refreshWarning() {
+            const value = amountInput.value.trim();
+            if (value === "") {
+                amountInput.setCustomValidity("");
+                warning.classList.add("d-none");
+                return;
+            }
+            const number = Number(value);
+            const invalid = Number.isNaN(number) || number < 0;
+            if (invalid) {
+                amountInput.setCustomValidity("Negative amounts are not allowed.");
+                warning.classList.remove("d-none");
+                return;
+            }
+            amountInput.setCustomValidity("");
+            warning.classList.add("d-none");
+        }
+
+        amountInput.addEventListener("input", refreshWarning);
+    })();
+</script>
 </body>
 </html>

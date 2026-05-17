@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#ffe6e6"/>
+  <rect x="140" y="330" width="620" height="150" rx="20" fill="#f08b9a"/>
+  <rect x="200" y="250" width="500" height="90" rx="16" fill="#ffd2d9"/>
+  <circle cx="300" cy="250" r="18" fill="#ff7a8a"/>
+  <circle cx="450" cy="250" r="18" fill="#ff7a8a"/>
+  <circle cx="600" cy="250" r="18" fill="#ff7a8a"/>
+  <text x="450" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" fill="#8c2f39">CAKE</text>
+</svg>

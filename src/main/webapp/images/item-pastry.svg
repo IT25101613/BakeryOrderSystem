@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#fff3e8"/>
+  <path d="M180 380 Q450 160 720 380 Q450 470 180 380 Z" fill="#e3a565"/>
+  <path d="M220 365 Q450 215 680 365" stroke="#c8864e" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <path d="M265 345 Q450 250 635 345" stroke="#c8864e" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <text x="450" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" fill="#8e5a30">PASTRY</text>
+</svg>

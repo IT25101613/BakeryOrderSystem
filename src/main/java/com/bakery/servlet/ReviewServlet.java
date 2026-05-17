@@ -15,6 +15,14 @@ public class ReviewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("action");
+
+        if ("delete".equalsIgnoreCase(action)) {
+            String reviewId = request.getParameter("reviewId");
+            reviewService.deleteReview(reviewId);
+            response.sendRedirect("reviews.jsp");
+            return;
+        }
 
         String reviewId = request.getParameter("reviewId");
         String customerId = request.getParameter("customerId");

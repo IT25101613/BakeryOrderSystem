@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#fff1dc"/>
+  <circle cx="450" cy="300" r="190" fill="#d89d5b"/>
+  <circle cx="390" cy="240" r="16" fill="#7a4c24"/>
+  <circle cx="510" cy="220" r="14" fill="#7a4c24"/>
+  <circle cx="560" cy="320" r="12" fill="#7a4c24"/>
+  <circle cx="430" cy="355" r="14" fill="#7a4c24"/>
+  <circle cx="345" cy="310" r="13" fill="#7a4c24"/>
+  <text x="450" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" fill="#7a4c24">COOKIE</text>
+</svg>

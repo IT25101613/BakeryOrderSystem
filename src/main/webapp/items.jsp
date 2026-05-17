@@ -9,6 +9,9 @@
 </head>
 <body>
 <div class="container mt-4">
+<div id="numberWarning" class="alert alert-danger d-none" role="alert">
+    Negative values are not allowed. Quantity must be 0 or more.
+</div>
 
 <h2>Bakery Item Management</h2>
 
@@ -54,12 +57,15 @@
 
     <input type="number"
            step="0.01"
+           min="0"
            name="price"
            placeholder="Price"
            value="<%= editItem != null ? editItem.getPrice() : "" %>"
            required><br><br>
 
     <input type="number"
+           min="0"
+           step="1"
            name="quantity"
            placeholder="Quantity"
            value="<%= editItem != null ? editItem.getQuantity() : "" %>"
@@ -154,5 +160,39 @@
 <a href="index.jsp">Back to Home</a>
 
 </div>
+<script>
+    (function () {
+        const warning = document.getElementById("numberWarning");
+        const numericInputs = document.querySelectorAll("input[type='number']");
+
+        function validateInput(input) {
+            const value = input.value.trim();
+            if (value === "") {
+                input.setCustomValidity("");
+                return false;
+            }
+            const number = Number(value);
+            const invalid = Number.isNaN(number) || number < 0;
+            if (invalid) {
+                input.setCustomValidity("Negative values are not allowed.");
+                return true;
+            }
+            input.setCustomValidity("");
+            return false;
+        }
+
+        function refreshWarning() {
+            let hasInvalid = false;
+            numericInputs.forEach(function (input) {
+                if (validateInput(input)) hasInvalid = true;
+            });
+            warning.classList.toggle("d-none", !hasInvalid);
+        }
+
+        numericInputs.forEach(function (input) {
+            input.addEventListener("input", refreshWarning);
+        });
+    })();
+</script>
 </body>
 </html>

@@ -8,10 +8,14 @@
 </head>
 <body>
 <div class="container mt-4">
+<div id="numberWarning" class="alert alert-danger d-none" role="alert">
+    Invalid rating. Use a value between 1 and 5 only.
+</div>
 
 <h2>Review Management</h2>
 
 <form action="review" method="post">
+    <input type="hidden" name="action" value="add">
 
     <input type="text"
            name="reviewId"
@@ -32,6 +36,7 @@
            name="rating"
            min="1"
            max="5"
+           step="1"
            placeholder="Rating (1-5)"
            required><br><br>
 
@@ -61,6 +66,7 @@
         <th>Target ID</th>
         <th>Rating</th>
         <th>Comment</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -73,6 +79,13 @@
         <td><%= review.getTargetId() %></td>
         <td><%= review.getRating() %></td>
         <td><%= review.getComment() %></td>
+        <td>
+            <form action="review" method="post" style="display:inline;">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="reviewId" value="<%= review.getReviewId() %>">
+                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+            </form>
+        </td>
     </tr>
     <%
         }
@@ -83,5 +96,32 @@
 <a href="index.jsp">Back to Home</a>
 
 </div>
+<script>
+    (function () {
+        const warning = document.getElementById("numberWarning");
+        const ratingInput = document.querySelector("input[name='rating']");
+        if (!ratingInput) return;
+
+        function refreshWarning() {
+            const value = ratingInput.value.trim();
+            if (value === "") {
+                ratingInput.setCustomValidity("");
+                warning.classList.add("d-none");
+                return;
+            }
+            const number = Number(value);
+            const invalid = Number.isNaN(number) || number < 1 || number > 5;
+            if (invalid) {
+                ratingInput.setCustomValidity("Rating must be between 1 and 5.");
+                warning.classList.remove("d-none");
+                return;
+            }
+            ratingInput.setCustomValidity("");
+            warning.classList.add("d-none");
+        }
+
+        ratingInput.addEventListener("input", refreshWarning);
+    })();
+</script>
 </body>
 </html>

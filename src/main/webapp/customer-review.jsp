@@ -19,6 +19,9 @@
 </nav>
 
 <div class="container mt-4">
+    <div id="numberWarning" class="alert alert-danger d-none" role="alert">
+        Invalid rating. Use a value between 1 and 5 only.
+    </div>
 
     <div class="card shadow">
         <div class="card-body">
@@ -34,7 +37,7 @@
 
                 <input type="text" name="targetId" class="form-control mb-3" placeholder="Item ID or Order ID" required>
 
-                <input type="number" name="rating" min="1" max="5" class="form-control mb-3" placeholder="Rating 1-5" required>
+                <input type="number" name="rating" min="1" max="5" step="1" class="form-control mb-3" placeholder="Rating 1-5" required>
 
                 <textarea name="comment" class="form-control mb-3" rows="4" placeholder="Write your review" required></textarea>
 
@@ -77,6 +80,34 @@
     </div>
 
 </div>
+
+<script>
+    (function () {
+        const warning = document.getElementById("numberWarning");
+        const ratingInput = document.querySelector("input[name='rating']");
+        if (!ratingInput) return;
+
+        function refreshWarning() {
+            const value = ratingInput.value.trim();
+            if (value === "") {
+                ratingInput.setCustomValidity("");
+                warning.classList.add("d-none");
+                return;
+            }
+            const number = Number(value);
+            const invalid = Number.isNaN(number) || number < 1 || number > 5;
+            if (invalid) {
+                ratingInput.setCustomValidity("Rating must be between 1 and 5.");
+                warning.classList.remove("d-none");
+                return;
+            }
+            ratingInput.setCustomValidity("");
+            warning.classList.add("d-none");
+        }
+
+        ratingInput.addEventListener("input", refreshWarning);
+    })();
+</script>
 
 </body>
 </html>

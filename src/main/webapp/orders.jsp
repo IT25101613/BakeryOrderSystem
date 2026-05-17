@@ -9,6 +9,9 @@
 </head>
 <body>
 <div class="container mt-4">
+<div id="numberWarning" class="alert alert-danger d-none" role="alert">
+    Negative numbers are not allowed. Quantity must be at least 1.
+</div>
 
 <h2>Order Management</h2>
 
@@ -36,7 +39,7 @@
     <input type="text" name="itemId" placeholder="Item ID"
            value="<%= editOrder != null ? editOrder.getItemId() : "" %>" required><br><br>
 
-    <input type="number" name="quantity" placeholder="Quantity"
+    <input type="number" name="quantity" min="1" step="1" placeholder="Quantity"
            value="<%= editOrder != null ? editOrder.getQuantity() : "" %>" required><br><br>
 
     <select name="status" required>
@@ -118,5 +121,32 @@
 <a href="index.jsp">Back to Home</a>
 
 </div>
+<script>
+    (function () {
+        const warning = document.getElementById("numberWarning");
+        const quantityInput = document.querySelector("input[name='quantity']");
+        if (!quantityInput) return;
+
+        function refreshWarning() {
+            const value = quantityInput.value.trim();
+            if (value === "") {
+                quantityInput.setCustomValidity("");
+                warning.classList.add("d-none");
+                return;
+            }
+            const number = Number(value);
+            const invalid = Number.isNaN(number) || number < 1;
+            if (invalid) {
+                quantityInput.setCustomValidity("Quantity must be 1 or more. Negative values are not allowed.");
+                warning.classList.remove("d-none");
+                return;
+            }
+            quantityInput.setCustomValidity("");
+            warning.classList.add("d-none");
+        }
+
+        quantityInput.addEventListener("input", refreshWarning);
+    })();
+</script>
 </body>
 </html>

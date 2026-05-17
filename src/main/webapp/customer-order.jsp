@@ -6,12 +6,19 @@
 <html>
 <head>
     <title>Place Order</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #fff8f0; }
+        .topbar { background-color:#6f4e37; }
+        .card { border: 1px solid #f0dcc8; border-radius: 12px; }
+    </style>
 </head>
 
-<body style="background-color:#fff8f0;">
+<body>
 
-<nav class="navbar navbar-dark" style="background-color:#6f4e37;">
+<nav class="navbar navbar-dark topbar">
     <div class="container">
         <span class="navbar-brand">🛒 Place Bakery Order</span>
         <a href="customer-home.jsp" class="btn btn-light btn-sm">Back</a>
@@ -19,6 +26,9 @@
 </nav>
 
 <div class="container mt-4">
+    <div id="numberWarning" class="alert alert-danger d-none" role="alert">
+        Negative numbers are not allowed. Quantity must be at least 1.
+    </div>
 
     <div class="card shadow">
         <div class="card-body">
@@ -51,7 +61,7 @@
                     %>
                 </select>
 
-                <input type="number" name="quantity" class="form-control mb-3" placeholder="Quantity" required>
+                <input type="number" name="quantity" min="1" step="1" class="form-control mb-3 non-negative" placeholder="Quantity" required>
 
                 <input type="hidden" name="status" value="Pending">
 
@@ -97,6 +107,44 @@
     </div>
 
 </div>
+
+<script>
+    (function () {
+        const warning = document.getElementById("numberWarning");
+        const numericInputs = document.querySelectorAll("input[type='number']");
+
+        function validateInput(input) {
+            const value = input.value.trim();
+            if (value === "") {
+                input.setCustomValidity("");
+                return false;
+            }
+            const number = Number(value);
+            const invalid = Number.isNaN(number) || number < 0;
+            const quantityInvalid = input.name === "quantity" && number < 1;
+            if (invalid || quantityInvalid) {
+                input.setCustomValidity(input.name === "quantity"
+                    ? "Quantity must be 1 or more. Negative values are not allowed."
+                    : "Negative values are not allowed.");
+                return true;
+            }
+            input.setCustomValidity("");
+            return false;
+        }
+
+        function refreshWarning() {
+            let hasInvalid = false;
+            numericInputs.forEach(function (input) {
+                if (validateInput(input)) hasInvalid = true;
+            });
+            warning.classList.toggle("d-none", !hasInvalid);
+        }
+
+        numericInputs.forEach(function (input) {
+            input.addEventListener("input", refreshWarning);
+        });
+    })();
+</script>
 
 </body>
 </html>

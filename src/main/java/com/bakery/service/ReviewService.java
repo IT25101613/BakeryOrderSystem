@@ -46,4 +46,24 @@ public class ReviewService {
 
         return reviews;
     }
+
+    public boolean deleteReview(String reviewId) {
+        List<Review> reviews = getAllReviews();
+        boolean removed = reviews.removeIf(review -> review.getReviewId().equals(reviewId));
+
+        if (!removed) {
+            return false;
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) {
+            for (Review review : reviews) {
+                writer.write(review.toFileString());
+                writer.newLine();
+            }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
