@@ -61,4 +61,24 @@
         <url-pattern>/review</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.bakery.servlet.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.bakery.servlet.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
 </web-app>
