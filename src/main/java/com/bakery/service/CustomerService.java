@@ -24,6 +24,7 @@ public class CustomerService {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
+
                 if (data.length == 4) {
                     customers.add(new Customer(data[0], data[1], data[2], data[3]));
                 }
@@ -33,5 +34,20 @@ public class CustomerService {
         }
 
         return customers;
+    }
+
+    public void deleteCustomer(String id) {
+        List<Customer> customers = getAllCustomers();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (Customer customer : customers) {
+                if (!customer.getId().equals(id)) {
+                    writer.write(customer.toFileString());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

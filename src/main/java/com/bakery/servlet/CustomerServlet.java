@@ -12,13 +12,20 @@ public class CustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String id = request.getParameter("id");
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
+        String action = request.getParameter("action");
 
-        Customer customer = new Customer(id, name, email, phone);
-        customerService.addCustomer(customer);
+        if ("delete".equals(action)) {
+            String id = request.getParameter("id");
+            customerService.deleteCustomer(id);
+        } else {
+            String id = request.getParameter("id");
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+
+            Customer customer = new Customer(id, name, email, phone);
+            customerService.addCustomer(customer);
+        }
 
         response.sendRedirect("customers.jsp");
     }
