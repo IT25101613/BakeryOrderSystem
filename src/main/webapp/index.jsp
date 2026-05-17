@@ -11,7 +11,7 @@
     <li><a href="items.jsp">Bakery Item Management</a></li>
     <li><a href="orders.jsp">Order Management</a></li>
     <li><a href="bookings.jsp">Custom Cake Booking</a></li>
-    <li>Payment Management</li>
+    <li><a href="payments.jsp">Payment Management</a></li>
     <li>Review Management</li>
 </ul>
 
