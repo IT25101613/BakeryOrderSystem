@@ -8,7 +8,7 @@
 
 <ul>
     <li><a href="customers.jsp">Customer Management</a></li>
-    <li>Bakery Item Management</li>
+    <li><a href="items.jsp">Bakery Item Management</a></li>
     <li>Order Management</li>
     <li>Custom Cake Booking</li>
     <li>Payment Management</li>

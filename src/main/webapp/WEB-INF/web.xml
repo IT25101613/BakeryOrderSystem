@@ -11,4 +11,14 @@
         <url-pattern>/customer</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ItemServlet</servlet-name>
+        <servlet-class>com.bakery.servlet.ItemServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ItemServlet</servlet-name>
+        <url-pattern>/item</url-pattern>
+    </servlet-mapping>
+
 </web-app>
