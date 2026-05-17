@@ -12,7 +12,7 @@
     <li><a href="orders.jsp">Order Management</a></li>
     <li><a href="bookings.jsp">Custom Cake Booking</a></li>
     <li><a href="payments.jsp">Payment Management</a></li>
-    <li>Review Management</li>
+    <li><a href="reviews.jsp">Review Management</a></li>
 </ul>
 
 </body>
