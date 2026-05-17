@@ -50,6 +50,41 @@
         </div>
     </div>
 
+    <div class="row g-3 mt-1">
+        <div class="col-md-3">
+            <div class="card h-100 border-danger-subtle">
+                <div class="card-body">
+                    <h6 class="mb-2">Birthday Cakes</h6>
+                    <p class="mb-0 text-muted">Ideal for parties with custom names and themes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100 border-danger-subtle">
+                <div class="card-body">
+                    <h6 class="mb-2">Wedding Cakes</h6>
+                    <p class="mb-0 text-muted">Multi-tier options available for special events.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100 border-danger-subtle">
+                <div class="card-body">
+                    <h6 class="mb-2">Anniversary Cakes</h6>
+                    <p class="mb-0 text-muted">Elegant and personalized cake messages supported.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100 border-danger-subtle">
+                <div class="card-body">
+                    <h6 class="mb-2">Custom Design</h6>
+                    <p class="mb-0 text-muted">Share flavor and message details in the booking form.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 </body>

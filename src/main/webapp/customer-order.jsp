@@ -61,6 +61,41 @@
         </div>
     </div>
 
+    <div class="card shadow mt-4">
+        <div class="card-body">
+            <h4 class="mb-3">Available Items</h4>
+            <table class="table table-bordered table-striped mb-0">
+                <tr>
+                    <th>Item ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Available Qty</th>
+                </tr>
+                <%
+                    for (BakeryItem item : items) {
+                %>
+                <tr>
+                    <td><%= item.getItemId() %></td>
+                    <td><%= item.getName() %></td>
+                    <td><%= item.getCategory() %></td>
+                    <td>Rs. <%= item.getPrice() %></td>
+                    <td><%= item.getQuantity() %></td>
+                </tr>
+                <%
+                    }
+                    if (items.isEmpty()) {
+                %>
+                <tr>
+                    <td colspan="5" class="text-center">No items available</td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
+        </div>
+    </div>
+
 </div>
 
 </body>

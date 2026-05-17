@@ -51,7 +51,11 @@
         %>
     </table>
 
-    <a href="customer-order.jsp" class="btn btn-warning">Place Order</a>
+    <div class="d-flex gap-2">
+        <a href="customer-order.jsp" class="btn btn-warning">Place Order</a>
+        <a href="customer-booking.jsp" class="btn btn-danger">Book Custom Cake</a>
+        <a href="customer-review.jsp" class="btn btn-info">Add Review</a>
+    </div>
 
 </div>
 

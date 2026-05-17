@@ -1,3 +1,6 @@
+<%@ page import="com.bakery.service.ItemService" %>
+<%@ page import="com.bakery.model.BakeryItem" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -48,6 +51,40 @@
             </a>
         </div>
 
+    </div>
+
+    <hr class="my-5">
+
+    <h3 class="mb-3">Popular Bakery Items</h3>
+    <div class="row g-3">
+        <%
+            ItemService service = new ItemService();
+            List<BakeryItem> items = service.getAllItems();
+            int limit = Math.min(items.size(), 6);
+            for (int i = 0; i < limit; i++) {
+                BakeryItem item = items.get(i);
+        %>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-1"><%= item.getName() %></h5>
+                    <p class="text-muted mb-2"><%= item.getCategory() %></p>
+                    <p class="mb-1"><strong>Item ID:</strong> <%= item.getItemId() %></p>
+                    <p class="mb-1"><strong>Price:</strong> Rs. <%= item.getPrice() %></p>
+                    <p class="mb-0"><strong>Available:</strong> <%= item.getQuantity() %></p>
+                </div>
+            </div>
+        </div>
+        <%
+            }
+            if (items.isEmpty()) {
+        %>
+        <div class="col-12">
+            <div class="alert alert-warning mb-0">No bakery items available right now.</div>
+        </div>
+        <%
+            }
+        %>
     </div>
 
 </div>

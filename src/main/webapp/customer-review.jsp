@@ -1,3 +1,6 @@
+<%@ page import="com.bakery.service.ItemService" %>
+<%@ page import="com.bakery.model.BakeryItem" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -38,6 +41,38 @@
                 <button type="submit" class="btn btn-info w-100">Submit Review</button>
             </form>
 
+        </div>
+    </div>
+
+    <div class="card shadow mt-4">
+        <div class="card-body">
+            <h4 class="mb-3">Items You Can Review</h4>
+            <div class="row g-3">
+                <%
+                    ItemService service = new ItemService();
+                    List<BakeryItem> items = service.getAllItems();
+                    int limit = Math.min(items.size(), 6);
+                    for (int i = 0; i < limit; i++) {
+                        BakeryItem item = items.get(i);
+                %>
+                <div class="col-md-4">
+                    <div class="border rounded p-3 h-100 bg-light">
+                        <p class="mb-1"><strong><%= item.getName() %></strong></p>
+                        <p class="mb-1 text-muted"><%= item.getCategory() %></p>
+                        <p class="mb-0">Target ID: <%= item.getItemId() %></p>
+                    </div>
+                </div>
+                <%
+                    }
+                    if (items.isEmpty()) {
+                %>
+                <div class="col-12">
+                    <div class="alert alert-warning mb-0">No items available to review.</div>
+                </div>
+                <%
+                    }
+                %>
+            </div>
         </div>
     </div>
 
