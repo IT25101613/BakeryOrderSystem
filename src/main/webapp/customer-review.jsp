@@ -7,13 +7,33 @@
 <head>
     <title>Add Review</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Nunito", sans-serif;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(255, 165, 92, 0.2), transparent 35%),
+                radial-gradient(circle at 88% 12%, rgba(255, 94, 58, 0.17), transparent 33%),
+                linear-gradient(180deg, #fff8f1 0%, #ffe7d6 100%);
+            min-height: 100vh;
+        }
+        .brand-title { font-family: "Playfair Display", serif; }
+        .pastry-nav { background: linear-gradient(90deg, #8d3e1f, #b5532b); }
+        .card {
+            border: 1px solid #f1cdb5;
+            border-radius: 12px;
+            box-shadow: 0 10px 24px rgba(141, 62, 31, 0.14);
+        }
+    </style>
 </head>
 
-<body style="background-color:#fff8f0;">
+<body>
 
-<nav class="navbar navbar-dark" style="background-color:#6f4e37;">
+<nav class="navbar navbar-dark pastry-nav">
     <div class="container">
-        <span class="navbar-brand">⭐ Add Customer Review</span>
+        <span class="navbar-brand brand-title">Add Customer Review</span>
         <a href="customer-home.jsp" class="btn btn-light btn-sm">Back</a>
     </div>
 </nav>

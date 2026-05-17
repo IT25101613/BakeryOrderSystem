@@ -4,17 +4,32 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%!
     private String getItemImage(String name, String category) {
-        String key = ((name == null ? "" : name) + " " + (category == null ? "" : category)).toLowerCase();
-        if (key.contains("chocolate cake")) return "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("wedding cake")) return "https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("cupcake")) return "https://images.pexels.com/photos/1055272/pexels-photo-1055272.jpeg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("donut") || key.contains("doughnut")) return "https://images.pexels.com/photos/4686960/pexels-photo-4686960.jpeg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("cookie") || key.contains("biscuit")) return "https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("brownie")) return "https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("croissant")) return "https://images.pexels.com/photos/2135/food-france-morning-breakfast.jpg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("pastry")) return "https://images.pexels.com/photos/239578/pexels-photo-239578.jpeg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("bread") || key.contains("bun")) return "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=900";
-        if (key.contains("cake")) return "https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg?auto=compress&cs=tinysrgb&w=900";
+        String key = (name == null ? "" : name).toLowerCase().trim();
+        if (key.equals("chocolate cake")) return "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("red velvet cake")) return "https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("cheese cake")) return "https://images.pexels.com/photos/140831/pexels-photo-140831.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("black forest cake")) return "images/products/black-forest-cake.jpg";
+        if (key.equals("strawberry shortcake")) return "images/products/strawberry-shortcake.jpg";
+        if (key.equals("lemon drizzle cake")) return "https://images.pexels.com/photos/2144112/pexels-photo-2144112.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("vanilla pastry")) return "https://images.pexels.com/photos/239578/pexels-photo-239578.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("croissant") || key.equals("butter croissant")) return "https://images.pexels.com/photos/2135/food-france-morning-breakfast.jpg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("blueberry muffin")) return "https://images.pexels.com/photos/1657343/pexels-photo-1657343.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("chocolate donut")) return "https://images.pexels.com/photos/4686960/pexels-photo-4686960.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("cinnamon roll")) return "images/products/cinnamon-roll.jpg";
+        if (key.equals("almond tart")) return "images/products/almond-tart.jpg";
+        if (key.equals("garlic bread")) return "images/products/garlic-bread.jpg";
+        if (key.equals("banana bread")) return "https://images.pexels.com/photos/830894/pexels-photo-830894.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("whole wheat bread")) return "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("baguette")) return "https://images.pexels.com/photos/209206/pexels-photo-209206.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("multigrain bun")) return "images/products/multigrain-bun.jpg";
+        if (key.equals("oatmeal cookie")) return "https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (key.equals("choco chip cookie")) return "https://images.pexels.com/photos/890577/pexels-photo-890577.jpeg?auto=compress&cs=tinysrgb&w=900";
+
+        String cat = (category == null ? "" : category).toLowerCase();
+        if (cat.contains("cake")) return "https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (cat.contains("pastry")) return "https://images.pexels.com/photos/239578/pexels-photo-239578.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (cat.contains("bread")) return "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=900";
+        if (cat.contains("cookie")) return "https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg?auto=compress&cs=tinysrgb&w=900";
         return "https://images.pexels.com/photos/1070946/pexels-photo-1070946.jpeg?auto=compress&cs=tinysrgb&w=900";
     }
 %>
@@ -26,19 +41,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body { background: #fff8f0; }
-        .topbar { background-color: #6f4e37; }
-        .item-card { border: 1px solid #efd9c6; border-radius: 10px; overflow: hidden; background: #fff; }
+        body {
+            font-family: "Nunito", sans-serif;
+            background:
+                radial-gradient(circle at 14% 16%, rgba(255, 165, 92, 0.2), transparent 36%),
+                radial-gradient(circle at 84% 10%, rgba(255, 94, 58, 0.18), transparent 34%),
+                linear-gradient(180deg, #fff8f1 0%, #ffe7d6 100%);
+            min-height: 100vh;
+        }
+        .brand-title { font-family: "Playfair Display", serif; }
+        .pastry-nav { background: linear-gradient(90deg, #8d3e1f, #b5532b); }
+        .item-card { border: 1px solid #f1cdb5; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 10px 24px rgba(141, 62, 31, 0.14); }
         .item-card img { width: 100%; height: 170px; object-fit: cover; }
     </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-dark topbar">
+<nav class="navbar navbar-dark pastry-nav">
     <div class="container">
-        <span class="navbar-brand fw-semibold">Available Bakery Items</span>
+        <span class="navbar-brand fw-semibold brand-title">Available Bakery Items</span>
         <a href="customer-home.jsp" class="btn btn-light btn-sm">Back</a>
     </div>
 </nav>
