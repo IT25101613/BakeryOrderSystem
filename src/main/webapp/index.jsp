@@ -7,7 +7,7 @@
 <h1>Bakery Order & Custom Cake Booking Platform</h1>
 
 <ul>
-    <li>Customer Management</li>
+    <li><a href="customers.jsp">Customer Management</a></li>
     <li>Bakery Item Management</li>
     <li>Order Management</li>
     <li>Custom Cake Booking</li>

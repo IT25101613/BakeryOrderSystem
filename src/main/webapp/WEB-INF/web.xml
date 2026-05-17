@@ -1,0 +1,14 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         version="6.0">
+
+    <servlet>
+        <servlet-name>CustomerServlet</servlet-name>
+        <servlet-class>com.bakery.servlet.CustomerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CustomerServlet</servlet-name>
+        <url-pattern>/customer</url-pattern>
+    </servlet-mapping>
+
+</web-app>

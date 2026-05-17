@@ -2,33 +2,24 @@ package com.bakery.servlet;
 
 import com.bakery.model.Customer;
 import com.bakery.service.CustomerService;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/customers")
 public class CustomerServlet extends HttpServlet {
-    private final CustomerService customerService = new CustomerService();
+    private CustomerService customerService = new CustomerService();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("customers", customerService.getAllCustomers());
-        req.getRequestDispatcher("/customers.jsp").forward(req, resp);
-    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Customer customer = new Customer(
-                req.getParameter("id"),
-                req.getParameter("name"),
-                req.getParameter("phone"),
-                req.getParameter("email")
-        );
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+
+        Customer customer = new Customer(id, name, email, phone);
         customerService.addCustomer(customer);
-        resp.sendRedirect(req.getContextPath() + "/customers");
+
+        response.sendRedirect("customers.jsp");
     }
 }
