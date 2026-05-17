@@ -31,4 +31,14 @@
         <url-pattern>/order</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>com.bakery.servlet.BookingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/booking</url-pattern>
+    </servlet-mapping>
+
 </web-app>

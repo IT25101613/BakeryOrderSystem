@@ -10,7 +10,7 @@
     <li><a href="customers.jsp">Customer Management</a></li>
     <li><a href="items.jsp">Bakery Item Management</a></li>
     <li><a href="orders.jsp">Order Management</a></li>
-    <li>Custom Cake Booking</li>
+    <li><a href="bookings.jsp">Custom Cake Booking</a></li>
     <li>Payment Management</li>
     <li>Review Management</li>
 </ul>
