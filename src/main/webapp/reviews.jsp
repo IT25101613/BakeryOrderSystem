@@ -1,8 +1,10 @@
 <html>
 <head>
     <title>Review Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container mt-4">
 
 <h2>Review Management</h2>
 
@@ -36,7 +38,7 @@
               cols="30"
               required></textarea><br><br>
 
-    <button type="submit">Add Review</button>
+    <button class="btn btn-primary" type="submit">Add Review</button>
 
 </form>
 
@@ -44,5 +46,6 @@
 
 <a href="index.jsp">Back to Home</a>
 
+</div>
 </body>
 </html>

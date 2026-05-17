@@ -5,8 +5,10 @@
 <html>
 <head>
     <title>Order Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container mt-4">
 
 <h2>Order Management</h2>
 
@@ -44,7 +46,7 @@
         <option value="Cancelled">Cancelled</option>
     </select><br><br>
 
-    <button type="submit">
+    <button class="btn btn-primary" type="submit">
         <%= editOrder != null ? "Update Order" : "Place Order" %>
     </button>
 
@@ -54,7 +56,7 @@
 
 <h3>Order List</h3>
 
-<table border="1" cellpadding="10">
+<table class="table table-bordered table-striped">
     <tr>
         <th>Order ID</th>
         <th>Customer ID</th>
@@ -79,13 +81,13 @@
     <td>
         <form action="orders.jsp" method="get" style="display:inline;">
             <input type="hidden" name="editId" value="<%= order.getOrderId() %>">
-            <button type="submit">Edit</button>
+            <button class="btn btn-warning btn-sm" type="submit">Edit</button>
         </form>
 
         <form action="order" method="post" style="display:inline;">
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="orderId" value="<%= order.getOrderId() %>">
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
         </form>
     </td>
 </tr>
@@ -99,5 +101,6 @@
 <br>
 <a href="index.jsp">Back to Home</a>
 
+</div>
 </body>
 </html>

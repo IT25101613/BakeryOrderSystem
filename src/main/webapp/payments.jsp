@@ -5,8 +5,10 @@
 <html>
 <head>
     <title>Payment Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container mt-4">
 
 <h2>Payment Management</h2>
 
@@ -64,7 +66,7 @@
 
     </select><br><br>
 
-    <button type="submit">
+    <button class="btn btn-primary" type="submit">
         <%= editPayment != null ? "Update Payment" : "Add Payment" %>
     </button>
 
@@ -74,7 +76,7 @@
 
 <h3>Payment List</h3>
 
-<table border="1" cellpadding="10">
+<table class="table table-bordered table-striped">
 
     <tr>
         <th>Payment ID</th>
@@ -107,7 +109,7 @@
                    name="editId"
                    value="<%= payment.getPaymentId() %>">
 
-            <button type="submit">Edit</button>
+            <button class="btn btn-warning btn-sm" type="submit">Edit</button>
 
         </form>
 
@@ -119,7 +121,7 @@
                    name="paymentId"
                    value="<%= payment.getPaymentId() %>">
 
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
 
         </form>
 
@@ -137,5 +139,6 @@
 
 <a href="index.jsp">Back to Home</a>
 
+</div>
 </body>
 </html>

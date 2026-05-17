@@ -5,8 +5,10 @@
 <html>
 <head>
     <title>Bakery Item Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container mt-4">
 
 <h2>Bakery Item Management</h2>
 
@@ -63,7 +65,7 @@
            value="<%= editItem != null ? editItem.getQuantity() : "" %>"
            required><br><br>
 
-    <button type="submit">
+    <button class="btn btn-primary" type="submit">
         <%= editItem != null ? "Update Item" : "Add Item" %>
     </button>
 
@@ -73,7 +75,7 @@
 
 <h3>Item List</h3>
 
-<table border="1" cellpadding="10">
+<table class="table table-bordered table-striped">
 
     <tr>
         <th>ID</th>
@@ -105,7 +107,7 @@
                    name="editId"
                    value="<%= item.getItemId() %>">
 
-            <button type="submit">Edit</button>
+            <button class="btn btn-warning btn-sm" type="submit">Edit</button>
 
         </form>
 
@@ -117,7 +119,7 @@
                    name="itemId"
                    value="<%= item.getItemId() %>">
 
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
 
         </form>
 
@@ -135,5 +137,6 @@
 
 <a href="index.jsp">Back to Home</a>
 
+</div>
 </body>
 </html>
