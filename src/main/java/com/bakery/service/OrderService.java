@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class OrderService {
+
     private static final String FILE_PATH = "data/orders.txt";
 
     public void addOrder(Order order) {
@@ -40,5 +41,46 @@ public class OrderService {
         }
 
         return orders;
+    }
+
+    public Order getOrderById(String orderId) {
+        for (Order order : getAllOrders()) {
+            if (order.getOrderId().equals(orderId)) {
+                return order;
+            }
+        }
+        return null;
+    }
+
+    public void updateOrder(Order updatedOrder) {
+        List<Order> orders = getAllOrders();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (Order order : orders) {
+                if (order.getOrderId().equals(updatedOrder.getOrderId())) {
+                    writer.write(updatedOrder.toFileString());
+                } else {
+                    writer.write(order.toFileString());
+                }
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteOrder(String orderId) {
+        List<Order> orders = getAllOrders();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (Order order : orders) {
+                if (!order.getOrderId().equals(orderId)) {
+                    writer.write(order.toFileString());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
